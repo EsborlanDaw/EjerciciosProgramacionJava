@@ -25,76 +25,163 @@ public class PracticaCalculadora {
         
     }
     
-    public static void calcular()
+    public static void calcular(int select)
     {
-        
-        int select = menu();
-        
         switch(select)
         {
             case 1:
-                sumarRestarMultiplicar();
+                sumar();
+             
                 break;
             case 2:
-                sumarRestarMultiplicar();
+                restar();
                 break;
             case 3:
-                sumarRestarMultiplicar();
+                multiplicar();
                 break;
             case 4:
+                dividir();
                 break;
             case 5:
+                calcularAreaRectangulo();
                 break;
             case 6:
+                calcularAreaTriangulo();
                 break;
             case 7:
+                calcularAreaCirculo();
                 break;
             case 8:
+                calculaSenoCosenoTangente();
                 break;
         }
     }
     
-    public static void sumarRestarMultiplicar ()
+    public static void sumar()
     {
         Scanner cin = new Scanner (System.in);
         double res;
-        int select = menu();
+       
         System.out.println("Introduce primer numero");
         double n = cin.nextDouble();
         System.out.println("Introduce segundo numero");
         double n1 = cin.nextDouble();
-        
-        if(select == 1)
-            res = n + n1;
-        else if(select == 2)
-            res = n - n1;
-        else
-            res = n * n1;
-        
+        res = n + n1;
+       
         System.out.println("El resultado es: " + res);
        
    }
     
-    public static void dividir ()
-    {
-        
-    }
-    
-    public static int pedirIntEnRango(int max, int min)
+    public static void restar ()
     {
         Scanner cin = new Scanner (System.in);
+        double res;
+       
+        System.out.println("Introduce primer numero");
+        double n = cin.nextDouble();
+        System.out.println("Introduce segundo numero");
+        double n1 = cin.nextDouble();
+        res = n - n1;
+       
+        System.out.println("El resultado es: " + res);
+    }
+    public static void multiplicar ()
+    {
+        Scanner cin = new Scanner (System.in);
+        double res;
+       
+        System.out.println("Introduce primer numero");
+        double n = cin.nextDouble();
+        System.out.println("Introduce segundo numero");
+        double n1 = cin.nextDouble();
+        res = n * n1;
+       
+        System.out.println("El resultado es: " + res);
+    }
+    public static void dividir ()
+    {
+        Scanner cin = new Scanner (System.in);
+        double res;
+       
+        System.out.println("Introduce primer numero");
+        double n = cin.nextDouble();
+        System.out.println("Introduce segundo numero");
+        double n1 = cin.nextDouble();
+        if(n1!=0)
+        {
+            res = n / n1;
+            System.out.println("El resultado es: " + res);
+        }
+        else
+            System.out.println("ERROR");
+    }
+    public static double calcularAreaRectangulo()
+    {
+        double base, altura, area;
         
-        System.out.println("Elige una opcion: ");
-        int op = cin.nextInt();
+        base = pedirNEnRango(0,1000000);
+        altura = pedirNEnRango(0,1000000);
         
-        return op;
+        area = base * altura;
+        
+        System.out.println("El area es: " + area);
+        
+        return area;
+        
+    }
+    public static void calcularAreaTriangulo()
+    {
+        double area = calcularAreaRectangulo() / 2;
+        
+        System.out.println("El area es: " + area);
+    }
+    public static void calcularAreaCirculo()
+    {
+        double radio = pedirNEnRango(0,1000000);
+        
+        double area = Math.PI * (radio * radio);
+        
+        System.out.println("El area es: " + area);
+    }
+    public static void calculaSenoCosenoTangente()
+    {
+        double x = pedirNEnRango(-360,360);
+        
+        System.out.println("El seno es: " + Math.sin(x));
+        System.out.println("El coseno es: " + Math.cos(x) );
+        System.out.println("La tangente es: " + Math.tan(x));
+    }
+    public static double pedirNEnRango(int max, int min)
+    {
+        Scanner cin = new Scanner (System.in);
+        double n;
+        
+        do
+        {
+            System.out.println("Introduce numeros entre: " + max + "," + min);
+            n = cin.nextInt();
+        }
+        while(n>min && n<max);
+        
+        return n;
     }
     
     
     
     public static void main(String[] args) {
         
-       menu();
+        int select;
+        
+        do
+        {
+            select = menu();
+            calcular(select);
+        }
+        
+        while(select!=9);
+         
+       
     }
 
 }
+
