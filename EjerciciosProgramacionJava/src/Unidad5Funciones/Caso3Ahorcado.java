@@ -53,9 +53,9 @@ public class Caso3Ahorcado {
         return correcto;
     }
     
-    public static void mostrarPalabra()
+    public static void mostrarPalabra(String palabra)
     {
-        String palabra = damePalabraAleatoria();
+        palabra = damePalabraAleatoria();
         
         for(int i = 0; i<palabra.length(); i++)
         {
@@ -64,5 +64,6 @@ public class Caso3Ahorcado {
     }
     public static void main(String[] args) {
        
+        mostrarPalabra();
     }
 }
