@@ -46,24 +46,51 @@ public class Caso3Ahorcado {
         return vida;
     }
     
-    public static boolean comprobarRespuesta(char letra, String palabra)
+    public static boolean comprobarRespuesta()
     {
-        boolean correcto = false;
+        int max = 5;
+        boolean correcta = true;
+        String palabra = damePalabraAleatoria();
+        char letra = pedirLetra();
+       
         
-        return correcto;
+        
+        for (int i=0; i<palabra.length();i++)
+        {
+           if(palabra.charAt(i)==letra)
+           {
+               System.out.print("Vidas: " + max);
+               System.out.print(" - "+ palabra.charAt(i));
+           }
+           
+           else
+           {
+               System.out.print(" - ");
+               max--;
+               comprobarVidas(max);
+           }       
+        }
+        
+        return correcta;
     }
     
-    public static void mostrarPalabra(String palabra)
+    public static void mostrarPalabra()
     {
-        palabra = damePalabraAleatoria();
+        String palabra = damePalabraAleatoria();
         
         for(int i = 0; i<palabra.length(); i++)
         {
             System.out.print("-");
         }
+        System.out.println(" " + palabra);
+        
     }
     public static void main(String[] args) {
        
+        
         mostrarPalabra();
+        comprobarRespuesta();
     }
+
+    
 }
